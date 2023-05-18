@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Confirm Booking!!!</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+    }
+
+    h1,
+    p {
+        margin: 10px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+	<h1>Confirm Booking</h1>
+	<p>
+		Booking ID: <span th:text="${bookingId}"></span>
+	</p>
+	<p>
+		Name: <span th:text="${name}"></span>
+	</p>
+	<p>
+		Parking Space ID: <span th:text="${parkingSpaceId}"></span>
+	</p>
+	<p>
+		Start Time: <span th:text="${startTime}"></span>
+	</p>
+
+	<!-- Andere inhoud van de pagina -->
+
+	
+		
+		<button type="submit" id= "exitButton">Exit</button>
+	
+
+	<script>
+    document.getElementById("exitButton").addEventListener("click", function() {
+        window.location.href = "../";
+    });
+</script>
+
+</body>
+</html>

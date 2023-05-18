@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Straat met parkeerplaatsen</title>
+	<style>
+		/* Style voor de straat en parkeerplaatsen */
+		.street {
+			height: 500px;
+			width: 200px;
+			background-color: grey;
+			position: relative;
+			margin: 0 auto;
+		}
+		.parking-spot {
+			width: 80px;
+			height: 40px;
+			position: absolute;
+		}
+		.left {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			margin: 10px auto 0 auto;
+		}
+		.right {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right:600;
+			margin: 0 auto 10px auto;
+		}
+
+		/* Kleur van de parkeerplaatsen */
+		.free {
+			background-color: green;
+		}
+		.occupied {
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="street">
+		<!-- Parkeerplaatsen aan de bovenkant -->
+		<div class="left">
+			<div class="parking-spot free" style="top: 10px;"></div>
+			<div class="parking-spot free" style="top: 60px;"></div>
+			<div class="parking-spot occupied" style="top: 110px;"></div>
+			<div class="parking-spot free" style="top: 160px;"></div>
+			<div class="parking-spot occupied" style="top: 210px;"></div>
+			<div class="parking-spot free" style="top: 260px;"></div>
+			<div class="parking-spot free" style="top: 310px;"></div>
+			<div class="parking-spot free" style="top: 360px;"></div>
+			<div class="parking-spot occupied" style="top: 410px;"></div>
+			<div class="parking-spot free" style="top: 460px;"></div>
+		</div>
+		<!-- Parkeerplaatsen aan de onderkant -->
+		<div class="right">
+			<div class="parking-spot free" style="bottom: 10px;"></div>
+			<div class="parking-spot free" style="bottom: 60px;"></div>
+			<div class="parking-spot free" style="bottom: 110px;"></div>
+			<div class="parking-spot occupied" style="bottom: 160px;"></div>
+			<div class="parking-spot free" style="bottom: 210px;"></div>
+			<div class="parking-spot free" style="bottom: 260px;"></div>
+			<div class="parking-spot occupied" style="bottom: 310px;"></div>
+			<div class="parking-spot free" style="bottom: 360px;"></div>
+			<div class="parking-spot free" style="bottom: 410px;"></div>
+			<div class="parking-spot free" style="bottom: 460px;"></div>
+		 </div>
+	</div>
+</body>
+
+</html>
