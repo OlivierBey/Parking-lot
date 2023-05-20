@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Parking Space</title>
+	<style type="text/css">
+		.space {
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			margin: 10px;
+			border: 1px solid black;
+			text-align: center;
+			font-size: 24px;
+			line-height: 50px;
+			cursor: pointer;
+		}
+
+		.space.available {
+			background-color: green;
+			color: white;
+		}
+
+		.space.unavailable {
+			background-color: red;
+			color: white;
+			cursor: not-allowed;
+		}
+	</style>
+</head>
+<body>
+	<h1>Parking Space</h1>
+	<p>Click on a space to toggle its availability.</p>
+	<div>
+		<?php
+		// Here, you would connect to your database and retrieve the available parking spaces and their statuses.
+
+		// For the sake of this example, we will create a static array of parking spaces.
+		$spaces = array(
+			array('location' => 'Left 1', 'available' => true),
+			array('location' => 'Left 2', 'available' => true),
+			array('location' => 'Left 3', 'available' => true),
+			array('location' => 'Left 4', 'available' => true),
+			array('location' => 'Left 5', 'available' => true),
+			array('location' => 'Right 1', 'available' => true),
+			array('location' => 'Right 2', 'available' => false),
+			array('location' => 'Right 3', 'available' => true),
+			array('location' => 'Right 4', 'available' => false),
+			array('location' => 'Right 5', 'available' => true)
+		);
+
+		// Loop through the parking spaces and display them as HTML elements.
+		foreach ($spaces as $space) {
+			$className = ($space['available']) ? 'available' : 'unavailable';
+			echo "<div class='space $className' data-location='{$space['location']}' data-available='{$space['available']}'></div>";
+		}
+		?>
+	</div>
+
+	<script type="text/javascript">
+		// Attach an event listener to each parking space element.
+		var spaces = document.querySelectorAll('.space');
+		for (var i = 0; i < spaces.length; i++) {
+			spaces[i].addEventListener('click', function() {
+				var location = this.getAttribute('data-location');
+				var available = (this.getAttribute('data-available') === 'true') ? false : true;
+				this.setAttribute('data-available', available);
+				var className = (available) ? 'available' : 'unavailable';
+				this.classList.remove('available', 'unavailable');
+				this.classList.add(className);
+
+				// Here, you would update the database with the new availability status of the parking space.
+			});
+		}
+	</script>
+</body>
+</html>

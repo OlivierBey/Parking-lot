@@ -1,9 +1,14 @@
 package parking.models;
 
+import org.hibernate.annotations.ColumnDefault;
+
+import jakarta.annotation.Nullable;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,7 +19,9 @@ public class ParkingSpace {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String location;
-	private boolean available;
+	
+	@Column(insertable=false, columnDefinition="tinyint(1) default 1")
+	private Boolean available= true;
 	
 	public String getLocation() {
 		return location;
@@ -31,5 +38,6 @@ public class ParkingSpace {
 	public long getId() {
 		return id;
 	}
+	
 	
 }

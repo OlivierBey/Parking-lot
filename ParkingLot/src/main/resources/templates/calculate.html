@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Confirm Booking!!!</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+    }
+
+    h1,
+    p {
+        margin: 10px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+	<h1>Booking payment</h1>
+	<form action="stopBooking/calculate" method="GET">
+		<p>
+			Booking ID: <span th:text="${bookingId}"></span>
+			<input type="hidden" name="bookingId" th:value="${bookingId}">
+		</p>
+		<p>
+			Name: <span th:text="${name}"></span>
+		</p>
+		<p>
+			Parking Space ID: <span th:text="${parkingSpaceId}"></span>
+		</p>
+		<p>
+			Start Time: <span th:text="${startTime}"></span>
+		</p>
+		<p>
+			Stop Time: <span th:text="${stopTime}"></span>
+		</p>
+		<p>
+			Total price: <span th:text="${totalPrice}"></span>
+		</p>
+		<button type="submit" id="paymentButton">Redirect to Payment</button>
+	</form>
+
+	<script>
+	    document.getElementById("paymentButton").addEventListener("click", function() {
+	        alert("Bedankt voor de betaling");
+	    });
+	</script>
+
+</body>
+</html>

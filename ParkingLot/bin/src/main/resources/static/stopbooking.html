@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Nieuwe boeking</title>
+<title>Stop boeking</title>
 <style>
 body {
 	display: flex;
@@ -46,18 +46,13 @@ input[type="submit"]:hover {
 <body>
 	<h1>Stop boeking</h1>
  
-	<form action="/stopBooking" method="post" id="formStart" >
+	<form action= "/stopBooking" method="post" >
 		<label for="name">Nummerplaat voertuig</label> 
 		<input type="text" id="name" name="name" required> 
 		
-		<button type="submit" form="formStart" value="Submit"style="width: 150px; height: 50px;" >Boeking Stoppen</button>
+
+		<input type="submit" value="Boeking stoppen">
 	</form>
-<script>
-		
-		
-		
-		
-		
-	</script>
+
 </body>
 </html>

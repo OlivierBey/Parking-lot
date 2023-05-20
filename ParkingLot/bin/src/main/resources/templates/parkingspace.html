@@ -10,31 +10,27 @@
 
 		.column {
 			flex: 1;
-			height: 400px;
+			height: 500px;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			
 		}
 
 		.center-image {
-			max-height: 300px;
-			
-			justify-content: center;
-			align-items: center;
+			max-height: 400px;
 		}
 
 		.parking-space {
 			margin: 10px;
-			
+			height: 130px; /* Aanpassing: Verhoog de hoogte van de parkingspaces */
 		}
 
 		.available {
 			background-color: green;
 			color: white;
 			margin: 10px;
-			height: 150px;
+			height: 120px;
 			width: 200px;
 			cursor: pointer;
 		}
@@ -47,36 +43,51 @@
 			width: 200px;
 			cursor: not-allowed;
 		}
-		
+		.selected {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			background-color: yellow;
+			padding: 10px;
+		}
+		.selected2 {
+			position: absolute;
+			top: 40px;
+			right: 10px;
+			background-color: yellow;
+			padding: 10px;
+		}
 	</style>
 </head>
 <body>
-
+<div class="selected2" >
+		Geselecteerde Parking Space ID: <span id="selectedParkingSpaceId"></span>!
+	</div>
+	<div class="selected">Boekingsnummer: <span th:text="${bookingId}"></span></div>
+	<h1 style="text-align: center; margin-top: 30px;">Bedankt voor het vertrouwen, selecteer uw gewenste parkeerplaats.</h1>
 	
-	<h1 style="text-align: center; margin-top: 30px;">Bedankt voor het vertrouwen, selecteer uw gewenste parkeerplaats.</h1><br>
-	
+	<!-- Voeg hieronder de volgende code toe -->
 	<div th:if="${findFirstAvailable != null}">
-	<h2 style="text-align: center;">Eerste beschikbare plaats is: nr[[${findFirstAvailable.id}]] op locatie: [[${findFirstAvailable.location}]]</h2><br>
+		<h2 style="text-align: center;">Eerste beschikbare plaats is: Space_[[${findFirstAvailable.id}]] Locatie:[[${findFirstAvailable.location}]]</h2>
 	</div>
 	
 	<div class="row">
 		<div class="column">
 			<!-- Eerste verticale rij -->
-			<div th:each="parking_space : ${parkingSpaces}" th:if="${parking_space.id % 2 == 0}"
-				 th:class="${parking_space.available}==true ? 'available' : 'unavailable'"
+			<div th:each="parking_space : ${parkingSpaces}" th:if="${parking_space.id % 2 == 1}"
+				 th:class="${parking_space.available} ? 'available' : 'unavailable'"
 				 th:onclick="'selectedparkingSpace(' + ${parking_space.id} + ')'"
 				 class="parking-space">
 				Space_[[${parking_space.id}]] location_[[${parking_space.location}]]
 			</div>
 		</div>
-		
 		<div class="center-image">
 			<!-- Grote afbeelding in het midden -->
 			<img src="parking.jpg" alt="Grote afbeelding">
 		</div>
 		<div class="column">
 			<!-- Tweede verticale rij -->
-			<div th:each="parking_space : ${parkingSpaces}" th:if="${parking_space.id % 2 == 1}"
+			<div th:each="parking_space : ${parkingSpaces}" th:if="${parking_space.id % 2 == 0}"
 				 th:class="${parking_space.available} ? 'available' : 'unavailable'"
 				 th:onclick="'selectedparkingSpace(' + ${parking_space.id} + ')'"
 				 class="parking-space">
@@ -85,35 +96,40 @@
 		</div>
 	</div>
 	
-	<form id="bookingForm" readonly method="post" th:action="@{/startBooking/space}">
-	<br>ParkingSpace nr:
-  <input id="parkingSpaceId" readonly name="parkingSpaceId" value="" />
-  <br>Booking nr:
-  <input id="bookingId" name="bookingId" th:value="${bookingId}" />
- <br>
+	<form id="bookingForm" method="post" th:action="@{/startBooking/space}">
+	Geselecteerde Parking Space ID:
+  <input id="parkingSpaceId" name="parkingSpaceId" value="" />
+  <input type="hidden" id="bookingId" name="bookingId" th:value="${bookingId}" /><br>
+  <!-- andere input elementen voor de boeking -->
   <button type="submit" style="margin-top: 20px;">Boeking bevestigen</button>
 </form>
 
 <script>
   function selectedparkingSpace(parkingSpaceId) {
-    
+	  
+	   
+	  
+    if (parkingSpaceId === "" ) {
+      alert('Selecteer een beschikbare parkeerplaats.');
+      return;
+    }
+
     var parkingSpaceInput = document.getElementById('parkingSpaceId');
     var selectedParkingSpaceId = document.getElementById('selectedParkingSpaceId');
-  
-
+    var parkingSpace = document.getElementById('parkingSpace_' + parkingSpaceId);
     
+    if (parkingSpaceInput.classList.contains('unavailable')) {
+      alert('Deze parkeerplaats is niet beschikbaar. Kies een andere.');
+    } else {
       parkingSpaceInput.value = parkingSpaceId;
       selectedParkingSpaceId.value = parkingSpaceId;
+    }
+   
+
     
   }
- 
+  // Andere code
 </script>
-
-
-
-
-
-
 	
 </body>
 </html>
