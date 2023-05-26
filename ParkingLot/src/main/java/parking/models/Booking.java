@@ -18,30 +18,30 @@ public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@ManyToOne
-	@JoinColumn(name="parkingSpace_id")
+	@JoinColumn(name = "parkingSpace_id")
 	private ParkingSpace parkingSpace;
-	
+
 	private String vehiclePlate;
 	private LocalDateTime startTime;
 	private LocalDateTime stopTime;
-	
+
 	@Nullable
 	private double totalPrice;
-	
-	public Booking() {}
-	
-	public Booking(String name, LocalDateTime startTime) {
-		this.vehiclePlate= name;
-		this.startTime= startTime;
+
+	public Booking() {
 	}
-	
-	
+
+	public Booking(String name, LocalDateTime startTime) {
+		this.vehiclePlate = name;
+		this.startTime = startTime;
+	}
+
 	public Booking(String name, LocalDateTime startTime, ParkingSpace selectedParkingSpace) {
-		this.vehiclePlate= name;
-		this.startTime= startTime;
-		this.parkingSpace=selectedParkingSpace;
+		this.vehiclePlate = name;
+		this.startTime = startTime;
+		this.parkingSpace = selectedParkingSpace;
 	}
 
 	public ParkingSpace getParkingSpace() {
@@ -55,33 +55,37 @@ public class Booking {
 	public LocalDateTime getStarTime() {
 		return startTime;
 	}
+
 	public void setStartTime(LocalDateTime startTime) {
 		this.startTime = startTime;
 	}
+
 	public LocalDateTime getStopTime() {
 		return stopTime;
 	}
+
 	public void setStopTime(LocalDateTime stopTime) {
 		this.stopTime = stopTime;
 	}
+
 	public double getTotalPrice() {
 		return totalPrice;
 	}
+
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+
 	public long getId() {
 		return id;
 	}
+
 	public String getVehiclePlate() {
 		return vehiclePlate;
 	}
+
 	public void setVehiclePlate(String vehiclePlate) {
 		this.vehiclePlate = vehiclePlate;
 	}
 
-	
-		
-		
-		
 }

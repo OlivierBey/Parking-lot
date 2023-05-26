@@ -15,33 +15,37 @@ public class TarifService {
 
 	@Autowired
 	TarifRepository tarifRepository;
-	
-	public TarifService() {}
-	
-	public TarifService(TarifRepository tarifRepository) {
-		this.tarifRepository= tarifRepository;
+
+	public TarifService() {
 	}
-	
-	
+
+	public TarifService(TarifRepository tarifRepository) {
+		this.tarifRepository = tarifRepository;
+	}
+
 	public Tarif findTarifsbyId(long id) {
 		return tarifRepository.findById(id).get();
 	}
+
 	public void addTarif(Tarif tarif) {
 		tarifRepository.save(tarif);
 	}
+
 	public void removeTarif(long id) {
 		tarifRepository.deleteById(id);
 	}
-	public List<Tarif> findAllTarifList(){
+
+	public List<Tarif> findAllTarifList() {
 		return tarifRepository.findAll();
 	}
 
 	public Tarif findTarifByName(String string) {
 		for (Tarif tarif : findAllTarifList()) {
-			if(tarif.getTarifname().equals(string)) {
+			if (tarif.getTarifname().equals(string)) {
 				return tarif;
 			}
-		}return null;
-		
+		}
+		return null;
+
 	}
 }

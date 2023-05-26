@@ -6,8 +6,6 @@ import org.springframework.stereotype.Repository;
 import parking.models.Booking;
 
 @Repository
-public interface BookingRepository extends JpaRepository<Booking,Long>{
-
-	
+public interface BookingRepository extends JpaRepository<Booking, Long> {
 
 }

@@ -15,18 +15,17 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tblHistory")
-public class History{
+public class History {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	
-	@Column(name= "StringBooking")
+
+	@Column(name = "StringBooking")
 	private String historyBooking;
-	
+
 	public History(String historyBooking) {
-		this.historyBooking=historyBooking;
+		this.historyBooking = historyBooking;
 	}
 
 	public String getHistoryBooking() {
@@ -40,7 +39,5 @@ public class History{
 	public long getId() {
 		return id;
 	}
-
-	
 
 }

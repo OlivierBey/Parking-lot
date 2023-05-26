@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import parking.models.Tarif;
 
 @Repository
-public interface TarifRepository extends JpaRepository<Tarif,Long>{
+public interface TarifRepository extends JpaRepository<Tarif, Long> {
 
 }

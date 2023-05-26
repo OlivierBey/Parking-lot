@@ -16,31 +16,38 @@ public class ParkingspaceService {
 
 	@Autowired
 	ParkingSpaceRepository parkingSpaceRepository;
-	
-	public ParkingspaceService() {}
-	
-	public ParkingspaceService(ParkingSpaceRepository parkingSpaceRepository) {
-		this.parkingSpaceRepository= parkingSpaceRepository;
+
+	public ParkingspaceService() {
 	}
+
+	public ParkingspaceService(ParkingSpaceRepository parkingSpaceRepository) {
+		this.parkingSpaceRepository = parkingSpaceRepository;
+	}
+
 	public ParkingSpace findParkingspaceById(long id) {
 		return parkingSpaceRepository.findById(id).get();
 	}
-	public List<ParkingSpace> findAllParkingSpaces(){
+
+	public List<ParkingSpace> findAllParkingSpaces() {
 		return parkingSpaceRepository.findAll();
 	}
+
 	public void addParkingspace(ParkingSpace p) {
 		parkingSpaceRepository.save(p);
 	}
+
 	public void removeParkingSpace(long id) {
 		parkingSpaceRepository.deleteById(id);
 	}
+
 	public boolean isParkingSpaceAvailable(ParkingSpace p) {
 		return p.isAvailable();
 	}
-	public List<ParkingSpace> availableParkingSpaces(){
-		List<ParkingSpace>freeList= new ArrayList<>();
+
+	public List<ParkingSpace> availableParkingSpaces() {
+		List<ParkingSpace> freeList = new ArrayList<>();
 		for (ParkingSpace p : findAllParkingSpaces()) {
-			if(p.isAvailable()) {
+			if (p.isAvailable()) {
 				freeList.add(p);
 			}
 		}
@@ -49,6 +56,6 @@ public class ParkingspaceService {
 
 	public ParkingSpace findFirstAvailable() {
 		return availableParkingSpaces().get(0);
-		
+
 	}
 }

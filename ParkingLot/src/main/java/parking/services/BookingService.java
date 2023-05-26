@@ -15,51 +15,61 @@ public class BookingService {
 
 	@Autowired
 	BookingRepository bookingRepository;
-	
+
 	@Autowired
 	TarifService tarifService;
-	
-	public BookingService() {}
-	
-	public BookingService(BookingRepository bookingRepository) {
-		this.bookingRepository= bookingRepository;
+
+	public BookingService() {
 	}
+
+	public BookingService(BookingRepository bookingRepository) {
+		this.bookingRepository = bookingRepository;
+	}
+
 	public Booking findBookingbyId(long id) {
 		return bookingRepository.findById(id).get();
 	}
-	
-	public List<Booking> findAllBookings(){
+
+	public List<Booking> findAllBookings() {
 		return bookingRepository.findAll();
 	}
+
 	public void addBooking(Booking b) {
 		bookingRepository.save(b);
 	}
+
 	public void removeBooking(long id) {
 		bookingRepository.deleteById(id);
 	}
 
 	public Booking findBookingByName(String name) {
 		for (Booking booking : findAllBookings()) {
-			if(booking.getVehiclePlate().equals(name)) {
+			if (booking.getVehiclePlate().equals(name)) {
 				return booking;
 			}
-		}return null;
-		
+		}
+		return null;
+
 	}
 
 	public void save(Booking booking) {
 		bookingRepository.save(booking);
-		
+
 	}
 
 	public double calculate(Booking booking) {
-		
-			int days= booking.getStopTime().getDayOfYear()-booking.getStarTime().getDayOfYear();
-			int minutes = ((booking.getStopTime().getHour()-booking.getStarTime().getHour())*60);
-			minutes+= (booking.getStopTime().getMinute()-booking.getStarTime().getMinute());
+
+		int days = booking.getStopTime().getDayOfYear() - booking.getStarTime().getDayOfYear();
+		int minutes = ((booking.getStopTime().getHour() - booking.getStarTime().getHour()) * 60);
+		minutes += (booking.getStopTime().getMinute() - booking.getStarTime().getMinute());
+		if(days>9) {
+			return (tarifService.findTarifByName("promoday").getPrice() * days)
+					+ (tarifService.findTarifByName("minute").getPrice() * minutes);
+		}else {
 			
-			return (tarifService.findTarifByName("day").getPrice()*days)+
-					(tarifService.findTarifByName("minute").getPrice()*minutes);
-		
+		return (tarifService.findTarifByName("day").getPrice() * days)
+				+ (tarifService.findTarifByName("minute").getPrice() * minutes);
+		}
+
 	}
 }

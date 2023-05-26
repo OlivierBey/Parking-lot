@@ -11,17 +11,18 @@ import parking.repositories.HistoryRepository;
 @Transactional
 public class HistoryService {
 
-	public HistoryService() {}
-	
-	public HistoryService(HistoryRepository historyRepository) {
-		this.historyRepository= historyRepository;
+	public HistoryService() {
 	}
-	
+
+	public HistoryService(HistoryRepository historyRepository) {
+		this.historyRepository = historyRepository;
+	}
+
 	@Autowired
 	HistoryRepository historyRepository;
-	
+
 	public void addToHistory(History historyBooking) {
 		historyRepository.save(historyBooking);
 	}
-	
+
 }
