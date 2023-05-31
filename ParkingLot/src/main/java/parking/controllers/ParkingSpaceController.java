@@ -28,12 +28,8 @@ public class ParkingSpaceController {
 
 	@GetMapping(value = "/startBooking/space")
 	public String getAllparkingSpaces(Model model) {
-		System.out.println("start parking");
 		List<ParkingSpace> parkingSpaces = parkingspaceService.findAllParkingSpaces();
-
-		for (ParkingSpace parkingSpace : parkingSpaces) {
-
-		}
+		
 		model.addAttribute("parkingSpaces", parkingSpaces);
 		model.addAttribute("findFirstAvailable", parkingspaceService.findFirstAvailable());
 

@@ -31,9 +31,7 @@ public class BookingController {
 	@PostMapping(value = "/startBooking")
 	public String newBooking(@RequestParam(name = "name") String name, Model model) {
 
-		System.out.println("start nieuwe booking");
 		LocalDateTime starttime = LocalDateTime.now();
-		System.out.println("Start " + name + " " + starttime);
 		Booking booking = new Booking(name, starttime);
 		bookingService.addBooking(booking);
 		model.addAttribute("bookingId", booking.getId());
@@ -44,12 +42,9 @@ public class BookingController {
 	@PostMapping("stopBooking")
 	public String stopBooking(@RequestParam(name = "name") String name, Model model) {
 		LocalDateTime stopTime = LocalDateTime.now();
-		Booking booking = bookingService.findBookingByName(name);
-
+		Booking booking = bookingService.findBookingByVehiclePlate(name);
 		booking.setStopTime(stopTime);
 		booking.setTotalPrice(bookingService.calculate(booking));
-		System.out.println("Stop " + name + " total price= " + booking.getTotalPrice());
-
 		bookingService.save(booking);
 
 		model.addAttribute("bookingId", booking.getId());

@@ -4,9 +4,10 @@
 	<style>
 		.row {
 			display: flex;
-			align-items: center;
+			align-items: start;
 			justify-content: center;
-		}
+			}
+		
 
 		.column {
 			flex: 1;
@@ -14,7 +15,7 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-			align-items: center;
+			align-items: start;
 			
 		}
 
@@ -22,7 +23,7 @@
 			max-height: 300px;
 			
 			justify-content: center;
-			align-items: center;
+			align-items: start;
 		}
 
 		.parking-space {
@@ -69,11 +70,11 @@
 				Space_[[${parking_space.id}]] location_[[${parking_space.location}]]
 			</div>
 		</div>
-		
 		<div class="center-image">
 			<!-- Grote afbeelding in het midden -->
 			<img src="parking.jpg" alt="Grote afbeelding">
 		</div>
+		
 		<div class="column">
 			<!-- Tweede verticale rij -->
 			<div th:each="parking_space : ${parkingSpaces}" th:if="${parking_space.id % 2 == 1}"
@@ -84,7 +85,7 @@
 			</div>
 		</div>
 	</div>
-	
+	<br><br>
 	<form id="bookingForm" readonly method="post" th:action="@{/startBooking/space}">
 	<br>ParkingSpace nr:
   <input id="parkingSpaceId" readonly name="parkingSpaceId" value="" />

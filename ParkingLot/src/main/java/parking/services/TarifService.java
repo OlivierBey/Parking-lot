@@ -39,13 +39,8 @@ public class TarifService {
 		return tarifRepository.findAll();
 	}
 
-	public Tarif findTarifByName(String string) {
-		for (Tarif tarif : findAllTarifList()) {
-			if (tarif.getTarifname().equals(string)) {
-				return tarif;
-			}
-		}
-		return null;
-
+	public Tarif findTarifByTarifname(String string) {
+		return tarifRepository.findTarifByTarifname(string);
 	}
+
 }

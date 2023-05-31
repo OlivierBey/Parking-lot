@@ -8,4 +8,6 @@ import parking.models.Booking;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Long> {
 
+	public Booking findBookingByVehiclePlate(String name);
+
 }

@@ -8,4 +8,6 @@ import parking.models.Tarif;
 @Repository
 public interface TarifRepository extends JpaRepository<Tarif, Long> {
 
+	public Tarif findTarifByTarifname(String string);
+
 }

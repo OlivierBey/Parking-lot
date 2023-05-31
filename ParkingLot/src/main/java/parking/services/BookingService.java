@@ -42,16 +42,6 @@ public class BookingService {
 		bookingRepository.deleteById(id);
 	}
 
-	public Booking findBookingByName(String name) {
-		for (Booking booking : findAllBookings()) {
-			if (booking.getVehiclePlate().equals(name)) {
-				return booking;
-			}
-		}
-		return null;
-
-	}
-
 	public void save(Booking booking) {
 		bookingRepository.save(booking);
 
@@ -62,14 +52,19 @@ public class BookingService {
 		int days = booking.getStopTime().getDayOfYear() - booking.getStarTime().getDayOfYear();
 		int minutes = ((booking.getStopTime().getHour() - booking.getStarTime().getHour()) * 60);
 		minutes += (booking.getStopTime().getMinute() - booking.getStarTime().getMinute());
-		if(days>9) {
-			return (tarifService.findTarifByName("promoday").getPrice() * days)
-					+ (tarifService.findTarifByName("minute").getPrice() * minutes);
-		}else {
-			
-		return (tarifService.findTarifByName("day").getPrice() * days)
-				+ (tarifService.findTarifByName("minute").getPrice() * minutes);
+		if (days > 9) {
+			return (tarifService.findTarifByTarifname("promoday").getPrice() * days)
+					+ (tarifService.findTarifByTarifname("minute").getPrice() * minutes);
+		} else {
+
+			return (tarifService.findTarifByTarifname("day").getPrice() * days)
+					+ (tarifService.findTarifByTarifname("minute").getPrice() * minutes);
 		}
+
+	}
+
+	public Booking findBookingByVehiclePlate(String name) {
+		return bookingRepository.findBookingByVehiclePlate(name);
 
 	}
 }

@@ -27,7 +27,6 @@ public class PaymentController {
 				.concat(booking.getStarTime().toString()).concat(" & ").concat(booking.getStopTime().toString())
 				.concat(" & ");
 		stringBooking += booking.getTotalPrice();
-
 		historyService.addToHistory(new History(stringBooking));
 
 		bookingService.removeBooking(bookingId);
