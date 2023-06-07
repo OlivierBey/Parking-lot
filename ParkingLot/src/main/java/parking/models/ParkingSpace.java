@@ -8,7 +8,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
+/**
+ * Bevat alle parkingspaces, hun locatie en of ze beschikbaarzijn
+ * Dit wordt zichtbaar door ze rood of groen te kleuren in de app
+ * @author olivi
+ *
+ */
 @Entity
 @Table(name = "tbl_parking_space")
 public class ParkingSpace {

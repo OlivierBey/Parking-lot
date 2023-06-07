@@ -17,7 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import parking.models.Booking;
 import parking.services.BookingService;
 import parking.services.ParkingspaceService;
-
+/**
+ * controllers worden gebruikt als verbinding tussen de frontend en de applicatie
+ * Deze wordt gebruikt bij het starten en stoppen van een booking
+ * @author olivi
+ *
+ */
 @Controller
 public class BookingController {
 

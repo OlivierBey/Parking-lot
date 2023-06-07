@@ -1,5 +1,8 @@
 package parking.controllers;
-
+/**
+ * controllers worden gebruikt als verbinding tussen de frontend en de applicatie
+ * Hier wordt main opgeroepen en de beschikbare plaatsen worden nagekeken
+ */
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;

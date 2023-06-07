@@ -12,7 +12,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
+/**
+ * Deze tabel bevat alle afgesloten bookings. Eens afgesloten en betaalt komen de gegevens als string in deze entity
+ * @author olivi
+ *
+ */
 @Entity
 @Table(name = "tblHistory")
 public class History {

@@ -53,7 +53,10 @@ public class ParkingspaceService {
 		}
 		return freeList;
 	}
-
+/**
+ * geeft de locatie van eerste vrije parkeerplaats
+ * @return
+ */
 	public ParkingSpace findFirstAvailable() {
 		return availableParkingSpaces().get(0);
 

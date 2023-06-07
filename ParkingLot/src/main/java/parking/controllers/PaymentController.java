@@ -1,5 +1,9 @@
 package parking.controllers;
-
+/**
+ * controllers worden gebruikt als verbinding tussen de frontend en de applicatie
+ * Bij het sluiten van een boeking worden de gegevens naar de history tabel overgezet
+ *  en de huidige booking wordt gewist
+ */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

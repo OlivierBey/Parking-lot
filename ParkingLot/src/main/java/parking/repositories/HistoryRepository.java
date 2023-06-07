@@ -1,5 +1,7 @@
 package parking.repositories;
-
+/**
+ * implements jpa voor crud operations
+ */
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import parking.models.Booking;

@@ -5,7 +5,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
+/**
+ * Tabel met tarieven
+ * gebruikt om totalprice te berekenen
+ * er is een minuutprijs, dagprijs en promoprijs vanaf langer dan 10 dagen
+ * @author olivi
+ *
+ */
 @Entity
 @Table(name = "tblTarif")
 public class Tarif {

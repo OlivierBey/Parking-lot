@@ -1,6 +1,9 @@
 
 package parking.controllers;
-
+/**
+ * controllers worden gebruikt als verbinding tussen de frontend en de applicatie
+ * De pagina met beschikbare plaatsen wordt hier opgeroepen
+ */
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

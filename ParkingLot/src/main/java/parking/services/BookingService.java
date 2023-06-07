@@ -1,5 +1,7 @@
 package parking.services;
-
+/**
+ * service klasse waar alle methodes worden verzameld
+ */
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +48,11 @@ public class BookingService {
 		bookingRepository.save(booking);
 
 	}
-
+/**
+ * calculate berekend de totalprice adhv Tarif tabel en startTime en stopTime
+ * @param booking
+ * @return
+ */
 	public double calculate(Booking booking) {
 
 		int days = booking.getStopTime().getDayOfYear() - booking.getStarTime().getDayOfYear();

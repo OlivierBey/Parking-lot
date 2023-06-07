@@ -10,7 +10,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
+/**
+ * Tabel Booking bevat alle actieve bookings dwz enkel de bookings die niet afgesloten zijn
+ * Waar er nog een auto op een parkeerplaats staat
+ * Bij sluiten van de booking wordt deze verwijderd
+ * @author olivi
+ *
+ */
 @Entity
 @Table(name = "tblBooking")
 public class Booking {
